@@ -1,0 +1,20 @@
+{
+	"app.title": "VespaTrace",
+	"app.subtitle": "Management Dashboard",
+	"system.active": "System Active",
+	"button.dashboard": "Dashboard",
+
+	"hero.powered": ".NET 9 & AI Detection",
+		"hero.poweredBy": "Powered by .NET 9 & AI Detection",
+	"hero.title": "Advanced Hornet Detection",
+	"hero.subtitle": "Management System",
+	"cta.viewLive": "View Live Dashboard",
+	"cta.watchDemo": "Watch Demo",
+
+	"stats.activeMonitors": "Active Monitors",
+	"stats.alertsToday": "Alerts Today",
+	"stats.verifiedSightings": "Verified Sightings",
+	"stats.protectedAreas": "Protected Areas",
+
+	"section.comprehensive": "Comprehensive Protection Platform"
+}

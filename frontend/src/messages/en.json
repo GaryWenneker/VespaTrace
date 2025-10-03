@@ -1,0 +1,17 @@
+{
+  "app.title": "VespaTrace",
+  "app.subtitle": "Management Dashboard",
+  "nav.dashboard": "Dashboard",
+  "nav.sightings": "Sightings",
+  "nav.alerts": "Alerts",
+  "nav.settings": "Settings",
+  "hero.title": "Advanced Hornet Detection",
+  "hero.subtitle": "Management System",
+  "home.getStartedPrefix": "Get started by editing",
+  "home.saveSeeChanges": "Save and see your changes instantly.",
+  "home.deployNow": "Deploy now",
+  "home.readDocs": "Read our docs",
+  "home.learn": "Learn",
+  "home.examples": "Examples",
+  "home.visitNext": "Go to nextjs.org →"
+}

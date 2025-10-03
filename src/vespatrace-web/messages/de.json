@@ -1,0 +1,20 @@
+{
+  "app.title": "VespaTrace",
+  "app.subtitle": "Verwaltungs-Dashboard",
+  "system.active": "System aktiv",
+  "button.dashboard": "Dashboard",
+
+  "hero.powered": ".NET 9 & KI-Erkennung",
+  "hero.poweredBy": "Angetrieben von .NET 9 & KI-Erkennung",
+  "hero.title": "Erweiterte Hornissen-Erkennung",
+  "hero.subtitle": "Managementsystem",
+  "cta.viewLive": "Live-Dashboard anzeigen",
+  "cta.watchDemo": "Demo ansehen",
+
+  "stats.activeMonitors": "Aktive Monitore",
+  "stats.alertsToday": "Warnungen heute",
+  "stats.verifiedSightings": "Bestätigte Sichtungen",
+  "stats.protectedAreas": "Geschützte Gebiete",
+
+  "section.comprehensive": "Umfassende Schutzplattform"
+}

@@ -1,0 +1,20 @@
+{
+	"app.title": "VespaTrace",
+	"app.subtitle": "Beheerdashboard",
+	"system.active": "Systeem actief",
+	"button.dashboard": "Dashboard",
+
+	"hero.powered": ".NET 9 & AI-detectie",
+		"hero.poweredBy": "Aangedreven door .NET 9 & AI-detectie",
+	"hero.title": "Geavanceerde hoornaar-detectie",
+	"hero.subtitle": "Beheersysteem",
+	"cta.viewLive": "Bekijk live dashboard",
+	"cta.watchDemo": "Bekijk demo",
+
+	"stats.activeMonitors": "Actieve monitoren",
+	"stats.alertsToday": "Meldingen vandaag",
+	"stats.verifiedSightings": "Geverifieerde waarnemingen",
+	"stats.protectedAreas": "Beschermde gebieden",
+
+	"section.comprehensive": "Uitgebreid beschermingsplatform"
+}

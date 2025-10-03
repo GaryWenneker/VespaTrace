@@ -1,0 +1,20 @@
+{
+  "app.title": "VespaTrace",
+  "app.subtitle": "Tableau de gestion",
+  "system.active": "Système actif",
+  "button.dashboard": "Tableau de bord",
+
+  "hero.powered": ".NET 9 et détection IA",
+  "hero.poweredBy": "Propulsé par .NET 9 et la détection IA",
+  "hero.title": "Détection avancée de frelons",
+  "hero.subtitle": "Système de gestion",
+  "cta.viewLive": "Voir le tableau de bord en direct",
+  "cta.watchDemo": "Regarder la démo",
+
+  "stats.activeMonitors": "Moniteurs actifs",
+  "stats.alertsToday": "Alertes aujourd'hui",
+  "stats.verifiedSightings": "Observations vérifiées",
+  "stats.protectedAreas": "Zones protégées",
+
+  "section.comprehensive": "Plateforme de protection complète"
+}

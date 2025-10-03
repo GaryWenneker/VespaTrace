@@ -1,0 +1,17 @@
+{
+  "app.title": "VespaTrace",
+  "app.subtitle": "Beheerdashboard",
+  "nav.dashboard": "Dashboard",
+  "nav.sightings": "Waarnemingen",
+  "nav.alerts": "Meldingen",
+  "nav.settings": "Instellingen",
+  "hero.title": "Geavanceerde hoornaar-detectie",
+  "hero.subtitle": "Beheersysteem",
+  "home.getStartedPrefix": "Begin door te bewerken",
+  "home.saveSeeChanges": "Sla op en zie je wijzigingen direct.",
+  "home.deployNow": "Nu deployen",
+  "home.readDocs": "Lees onze documentatie",
+  "home.learn": "Leren",
+  "home.examples": "Voorbeelden",
+  "home.visitNext": "Ga naar nextjs.org →"
+}
