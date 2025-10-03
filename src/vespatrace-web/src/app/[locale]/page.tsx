@@ -33,19 +33,19 @@ export default function Home() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
-                  VespaTrace
+                  {t('app.title')}
                 </h1>
-                <p className="text-xs text-gray-400">Management Dashboard</p>
+                <p className="text-xs text-gray-400">{t('app.subtitle')}</p>
               </div>
             </Link>
             
             <div className="flex items-center space-x-4">
               <div className="hidden md:flex items-center space-x-2 bg-green-500/10 text-green-400 px-3 py-1 rounded-full border border-green-500/20">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span className="text-sm font-medium">System Active</span>
+                <span className="text-sm font-medium">{t('system.active')}</span>
               </div>
               <button className="bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-lg font-medium transition-colors">
-                Dashboard
+                {t('button.dashboard')}
               </button>
               <LanguageSwitcher />
             </div>
@@ -70,8 +70,7 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Protect communities from Asian Giant Hornets with real-time AI-powered identification, 
-              comprehensive risk assessment, and instant community alerts across web and mobile platforms.
+              {t('hero.description')}
             </p>
           </div>
           
@@ -110,10 +109,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Comprehensive Protection Platform
+              {t('section.comprehensive')}
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Advanced technology stack delivering real-time hornet detection and community safety management
+              {t('section.comprehensiveSubtitle')}
             </p>
           </div>
 
@@ -121,23 +120,23 @@ export default function Home() {
             {[
               {
                 icon: Globe,
-                title: 'Web Management',
-                description: 'Professional dashboard for administrators with real-time analytics, risk assessment, and community oversight.',
-                features: ['Next.js 15 + TypeScript', 'Real-time SignalR updates', 'Advanced data visualization', 'Responsive design'],
+                title: t('features.web.title'),
+                description: t('features.web.description'),
+                features: [t('features.web.features.0'), t('features.web.features.1'), t('features.web.features.2'), t('features.web.features.3')],
                 color: 'from-blue-500 to-cyan-500'
               },
               {
                 icon: Smartphone,
-                title: 'Mobile Detection',
-                description: 'Cross-platform MAUI app for field reporting with camera integration and instant AI identification.',
-                features: ['Cross-platform MAUI', 'AI-powered detection', 'GPS location tracking', 'Offline capability'],
+                title: t('features.mobile.title'),
+                description: t('features.mobile.description'),
+                features: [t('features.mobile.features.0'), t('features.mobile.features.1'), t('features.mobile.features.2'), t('features.mobile.features.3')],
                 color: 'from-green-500 to-emerald-500'
               },
               {
                 icon: BarChart3,
-                title: 'AI Backend',
-                description: '.NET 9 API with ML.NET integration providing lightning-fast hornet species identification.',
-                features: ['.NET 9 performance', 'ML.NET classification', 'Entity Framework', 'SignalR real-time'],
+                title: t('features.backend.title'),
+                description: t('features.backend.description'),
+                features: [t('features.backend.features.0'), t('features.backend.features.1'), t('features.backend.features.2'), t('features.backend.features.3')],
                 color: 'from-orange-500 to-red-500'
               }
             ].map((feature, index) => (
@@ -168,21 +167,20 @@ export default function Home() {
             <div>
               <div className="inline-flex items-center space-x-2 bg-red-500/10 text-red-400 px-4 py-2 rounded-full border border-red-500/20 mb-6">
                 <AlertTriangle className="h-4 w-4" />
-                <span className="text-sm font-medium">Real-time Risk Assessment</span>
+                <span className="text-sm font-medium">{t('risk.badge')}</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                Intelligent Threat Detection
+                {t('risk.title')}
               </h2>
               <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-                Our advanced ML.NET models analyze hornet species, assess risk levels, and provide instant community alerts 
-                to protect your area from Asian Giant Hornet threats.
+                {t('risk.description')}
               </p>
               <div className="space-y-4">
                 {[
-                  { icon: Activity, text: 'Real-time species identification with 95%+ accuracy' },
-                  { icon: MapPin, text: 'Geographic hotspot mapping and risk analysis' },
-                  { icon: Users, text: 'Community-wide alert system and collaboration' },
-                  { icon: TrendingUp, text: 'Predictive analytics and trend monitoring' }
+                  { icon: Activity, text: t('risk.list.0') },
+                  { icon: MapPin, text: t('risk.list.1') },
+                  { icon: Users, text: t('risk.list.2') },
+                  { icon: TrendingUp, text: t('risk.list.3') }
                 ].map((item, index) => (
                   <div key={index} className="flex items-center space-x-4">
                     <div className="bg-orange-500/10 p-2 rounded-lg">
@@ -196,14 +194,14 @@ export default function Home() {
             <div className="relative">
               <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border border-gray-700/50">
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl font-semibold text-white">Current Risk Level</h3>
+                  <h3 className="text-xl font-semibold text-white">{t('risk.panel.currentRisk')}</h3>
                   <div className="bg-yellow-500/10 text-yellow-400 px-3 py-1 rounded-full border border-yellow-500/20">
-                    <span className="text-sm font-medium">Medium Risk</span>
+                    <span className="text-sm font-medium">{t('risk.level.medium')}</span>
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Asian Giant Hornet</span>
+                    <span className="text-gray-400">{t('risk.species.asianGiant')}</span>
                     <div className="flex items-center space-x-2">
                       <div className="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
                         <div className="w-3/5 h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"></div>
@@ -212,7 +210,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-400">European Hornet</span>
+                    <span className="text-gray-400">{t('risk.species.european')}</span>
                     <div className="flex items-center space-x-2">
                       <div className="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
                         <div className="w-1/4 h-full bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
@@ -221,7 +219,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Other Species</span>
+                    <span className="text-gray-400">{t('risk.species.other')}</span>
                     <div className="flex items-center space-x-2">
                       <div className="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
                         <div className="w-1/6 h-full bg-gradient-to-r from-gray-500 to-gray-600 rounded-full"></div>
@@ -232,8 +230,8 @@ export default function Home() {
                 </div>
                 <div className="mt-6 pt-6 border-t border-gray-700">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400">Last updated</span>
-                    <span className="text-white">2 minutes ago</span>
+                    <span className="text-gray-400">{t('risk.lastUpdated.label')}</span>
+                    <span className="text-white">{t('risk.lastUpdated.time')}</span>
                   </div>
                 </div>
               </div>
@@ -251,20 +249,20 @@ export default function Home() {
             <Link href={`/${locale}`} className="flex items-center space-x-3 mb-4 md:mb-0" aria-label="Go to home">
               <Shield className="h-8 w-8 text-orange-500" />
               <div>
-                <h3 className="text-lg font-bold text-white">VespaTrace</h3>
-                <p className="text-sm text-gray-400">Protecting communities with advanced technology</p>
+                <h3 className="text-lg font-bold text-white">{t('app.title')}</h3>
+                <p className="text-sm text-gray-400">{t('footer.tagline')}</p>
               </div>
             </Link>
             <div className="flex items-center space-x-6 text-sm text-gray-400">
-              <span>Powered by .NET 9</span>
+              <span>{t('footer.poweredDotnet')}</span>
               <span>•</span>
-              <span>ML.NET Detection</span>
+              <span>{t('footer.ml')}</span>
               <span>•</span>
-              <span>Next.js Dashboard</span>
+              <span>{t('footer.next')}</span>
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
-            <p>&copy; 2025 VespaTrace. Advanced hornet detection for community safety.</p>
+            <p>{t('footer.copyright')}</p>
           </div>
         </div>
       </footer>

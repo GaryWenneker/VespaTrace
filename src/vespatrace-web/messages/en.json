@@ -1,20 +1,98 @@
 {
-	"app.title": "VespaTrace",
-	"app.subtitle": "Management Dashboard",
-	"system.active": "System Active",
-	"button.dashboard": "Dashboard",
-
-	"hero.powered": ".NET 9 & AI Detection",
-		"hero.poweredBy": "Powered by .NET 9 & AI Detection",
-	"hero.title": "Advanced Hornet Detection",
-	"hero.subtitle": "Management System",
-	"cta.viewLive": "View Live Dashboard",
-	"cta.watchDemo": "Watch Demo",
-
-	"stats.activeMonitors": "Active Monitors",
-	"stats.alertsToday": "Alerts Today",
-	"stats.verifiedSightings": "Verified Sightings",
-	"stats.protectedAreas": "Protected Areas",
-
-	"section.comprehensive": "Comprehensive Protection Platform"
+	"app": {
+		"title": "VespaTrace",
+		"subtitle": "Management Dashboard"
+	},
+	"system": {
+		"active": "System Active"
+	},
+	"button": {
+		"dashboard": "Dashboard"
+	},
+	"hero": {
+		"powered": ".NET 9 & AI Detection",
+		"poweredBy": "Powered by .NET 9 & AI Detection",
+		"title": "Advanced Hornet Detection",
+		"subtitle": "Management System",
+		"description": "Protect communities from Asian Giant Hornets with real-time AI-powered identification, comprehensive risk assessment, and instant community alerts across web and mobile platforms."
+	},
+	"cta": {
+		"viewLive": "View Live Dashboard",
+		"watchDemo": "Watch Demo"
+	},
+	"stats": {
+		"activeMonitors": "Active Monitors",
+		"alertsToday": "Alerts Today",
+		"verifiedSightings": "Verified Sightings",
+		"protectedAreas": "Protected Areas"
+	},
+	"section": {
+		"comprehensive": "Comprehensive Protection Platform",
+		"comprehensiveSubtitle": "Advanced technology stack delivering real-time hornet detection and community safety management"
+	},
+	"features": {
+		"web": {
+			"title": "Web Management",
+			"description": "Professional dashboard for administrators with real-time analytics, risk assessment, and community oversight.",
+			"features": [
+				"Next.js 15 + TypeScript",
+				"Real-time SignalR updates",
+				"Advanced data visualization",
+				"Responsive design"
+			]
+		},
+		"mobile": {
+			"title": "Mobile Detection",
+			"description": "Cross-platform MAUI app for field reporting with camera integration and instant AI identification.",
+			"features": [
+				"Cross-platform MAUI",
+				"AI-powered detection",
+				"GPS location tracking",
+				"Offline capability"
+			]
+		},
+		"backend": {
+			"title": "AI Backend",
+			"description": ".NET 9 API with ML.NET integration providing lightning-fast hornet species identification.",
+			"features": [
+				".NET 9 performance",
+				"ML.NET classification",
+				"Entity Framework",
+				"SignalR real-time"
+			]
+		}
+	},
+	"risk": {
+		"badge": "Real-time Risk Assessment",
+		"title": "Intelligent Threat Detection",
+		"description": "Our advanced ML.NET models analyze hornet species, assess risk levels, and provide instant community alerts to protect your area from Asian Giant Hornet threats.",
+		"list": [
+			"Real-time species identification with 95%+ accuracy",
+			"Geographic hotspot mapping and risk analysis",
+			"Community-wide alert system and collaboration",
+			"Predictive analytics and trend monitoring"
+		],
+		"panel": {
+			"currentRisk": "Current Risk Level"
+		},
+		"level": {
+			"medium": "Medium Risk"
+		},
+		"species": {
+			"asianGiant": "Asian Giant Hornet",
+			"european": "European Hornet",
+			"other": "Other Species"
+		},
+		"lastUpdated": {
+			"label": "Last updated",
+			"time": "2 minutes ago"
+		}
+	},
+	"footer": {
+		"tagline": "Protecting communities with advanced technology",
+		"poweredDotnet": "Powered by .NET 9",
+		"ml": "ML.NET Detection",
+		"next": "Next.js Dashboard",
+		"copyright": "© 2025 VespaTrace. Advanced hornet detection for community safety."
+	}
 }

@@ -1,20 +1,98 @@
 {
-  "app.title": "VespaTrace",
-  "app.subtitle": "Tableau de gestion",
-  "system.active": "Système actif",
-  "button.dashboard": "Tableau de bord",
-
-  "hero.powered": ".NET 9 et détection IA",
-  "hero.poweredBy": "Propulsé par .NET 9 et la détection IA",
-  "hero.title": "Détection avancée de frelons",
-  "hero.subtitle": "Système de gestion",
-  "cta.viewLive": "Voir le tableau de bord en direct",
-  "cta.watchDemo": "Regarder la démo",
-
-  "stats.activeMonitors": "Moniteurs actifs",
-  "stats.alertsToday": "Alertes aujourd'hui",
-  "stats.verifiedSightings": "Observations vérifiées",
-  "stats.protectedAreas": "Zones protégées",
-
-  "section.comprehensive": "Plateforme de protection complète"
+  "app": {
+    "title": "VespaTrace",
+    "subtitle": "Tableau de gestion"
+  },
+  "system": {
+    "active": "Système actif"
+  },
+  "button": {
+    "dashboard": "Tableau de bord"
+  },
+  "hero": {
+    "powered": ".NET 9 et détection IA",
+    "poweredBy": "Propulsé par .NET 9 et la détection IA",
+    "title": "Détection avancée de frelons",
+    "subtitle": "Système de gestion",
+    "description": "Protégez les communautés contre les frelons géants asiatiques grâce à une identification en temps réel alimentée par l'IA, une évaluation complète des risques et des alertes instantanées sur le web et le mobile."
+  },
+  "cta": {
+    "viewLive": "Voir le tableau de bord en direct",
+    "watchDemo": "Regarder la démo"
+  },
+  "stats": {
+    "activeMonitors": "Moniteurs actifs",
+    "alertsToday": "Alertes aujourd'hui",
+    "verifiedSightings": "Observations vérifiées",
+    "protectedAreas": "Zones protégées"
+  },
+  "section": {
+    "comprehensive": "Plateforme de protection complète",
+    "comprehensiveSubtitle": "Pile technologique avancée offrant une détection en temps réel des frelons et une gestion de la sécurité communautaire"
+  },
+  "features": {
+    "web": {
+      "title": "Gestion Web",
+      "description": "Tableau de bord professionnel pour les administrateurs avec analyses en temps réel, évaluation des risques et supervision de la communauté.",
+      "features": [
+        "Next.js 15 + TypeScript",
+        "Mises à jour SignalR en temps réel",
+        "Visualisation de données avancée",
+        "Conception réactive"
+      ]
+    },
+    "mobile": {
+      "title": "Détection mobile",
+      "description": "Application MAUI multiplateforme pour les rapports de terrain avec intégration de la caméra et identification IA instantanée.",
+      "features": [
+        "MAUI multiplateforme",
+        "Détection alimentée par l'IA",
+        "Suivi de la localisation GPS",
+        "Fonctionnalité hors ligne"
+      ]
+    },
+    "backend": {
+      "title": "Backend IA",
+      "description": "API .NET 9 avec intégration ML.NET offrant une identification ultrarapide des espèces de frelons.",
+      "features": [
+        "Performances .NET 9",
+        "Classification ML.NET",
+        "Entity Framework",
+        "SignalR en temps réel"
+      ]
+    }
+  },
+  "risk": {
+    "badge": "Évaluation des risques en temps réel",
+    "title": "Détection intelligente des menaces",
+    "description": "Nos modèles ML.NET avancés analysent les espèces de frelons, évaluent les niveaux de risque et fournissent des alertes communautaires instantanées pour protéger votre zone.",
+    "list": [
+      "Identification des espèces en temps réel avec plus de 95% de précision",
+      "Cartographie des points chauds et analyse des risques",
+      "Système d'alerte à l'échelle de la communauté et collaboration",
+      "Analyses prédictives et suivi des tendances"
+    ],
+    "panel": {
+      "currentRisk": "Niveau de risque actuel"
+    },
+    "level": {
+      "medium": "Risque moyen"
+    },
+    "species": {
+      "asianGiant": "Frelon géant asiatique",
+      "european": "Frelon européen",
+      "other": "Autres espèces"
+    },
+    "lastUpdated": {
+      "label": "Dernière mise à jour",
+      "time": "Il y a 2 minutes"
+    }
+  },
+  "footer": {
+    "tagline": "Protéger les communautés avec une technologie avancée",
+    "poweredDotnet": "Propulsé par .NET 9",
+    "ml": "Détection ML.NET",
+    "next": "Tableau de bord Next.js",
+    "copyright": "© 2025 VespaTrace. Détection avancée des frelons pour la sécurité des communautés."
+  }
 }

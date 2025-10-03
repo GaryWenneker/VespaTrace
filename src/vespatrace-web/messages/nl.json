@@ -1,20 +1,98 @@
 {
-	"app.title": "VespaTrace",
-	"app.subtitle": "Beheerdashboard",
-	"system.active": "Systeem actief",
-	"button.dashboard": "Dashboard",
-
-	"hero.powered": ".NET 9 & AI-detectie",
-		"hero.poweredBy": "Aangedreven door .NET 9 & AI-detectie",
-	"hero.title": "Geavanceerde hoornaar-detectie",
-	"hero.subtitle": "Beheersysteem",
-	"cta.viewLive": "Bekijk live dashboard",
-	"cta.watchDemo": "Bekijk demo",
-
-	"stats.activeMonitors": "Actieve monitoren",
-	"stats.alertsToday": "Meldingen vandaag",
-	"stats.verifiedSightings": "Geverifieerde waarnemingen",
-	"stats.protectedAreas": "Beschermde gebieden",
-
-	"section.comprehensive": "Uitgebreid beschermingsplatform"
+	"app": {
+		"title": "VespaTrace",
+		"subtitle": "Beheerdashboard"
+	},
+	"system": {
+		"active": "Systeem actief"
+	},
+	"button": {
+		"dashboard": "Dashboard"
+	},
+	"hero": {
+		"powered": ".NET 9 & AI-detectie",
+		"poweredBy": "Aangedreven door .NET 9 & AI-detectie",
+		"title": "Geavanceerde hoornaar-detectie",
+		"subtitle": "Beheersysteem",
+		"description": "Bescherm gemeenschappen tegen Aziatische reuzenhoornaars met realtime AI-gestuurde identificatie, uitgebreide risicoanalyse en directe communitywaarschuwingen op web en mobiel."
+	},
+	"cta": {
+		"viewLive": "Bekijk live dashboard",
+		"watchDemo": "Bekijk demo"
+	},
+	"stats": {
+		"activeMonitors": "Actieve monitoren",
+		"alertsToday": "Meldingen vandaag",
+		"verifiedSightings": "Geverifieerde waarnemingen",
+		"protectedAreas": "Beschermde gebieden"
+	},
+	"section": {
+		"comprehensive": "Uitgebreid beschermingsplatform",
+		"comprehensiveSubtitle": "Geavanceerde technologiestack voor realtime hoornaar-detectie en communityveiligheidsbeheer"
+	},
+	"features": {
+		"web": {
+			"title": "Webbeheer",
+			"description": "Professioneel dashboard voor beheerders met realtime analyses, risicobeoordeling en toezicht op de community.",
+			"features": [
+				"Next.js 15 + TypeScript",
+				"Realtime SignalR-updates",
+				"Geavanceerde datavisualisatie",
+				"Responsief ontwerp"
+			]
+		},
+		"mobile": {
+			"title": "Mobiele detectie",
+			"description": "Cross-platform MAUI-app voor veldrapportage met camera-integratie en directe AI-identificatie.",
+			"features": [
+				"Cross-platform MAUI",
+				"AI-gestuurde detectie",
+				"GPS-locatiebepaling",
+				"Offline functionaliteit"
+			]
+		},
+		"backend": {
+			"title": "AI-backend",
+			"description": ".NET 9 API met ML.NET-integratie voor razendsnelle soortidentificatie.",
+			"features": [
+				".NET 9-prestaties",
+				"ML.NET-classificatie",
+				"Entity Framework",
+				"SignalR realtime"
+			]
+		}
+	},
+	"risk": {
+		"badge": "Realtime risicobeoordeling",
+		"title": "Intelligente dreigingsdetectie",
+		"description": "Onze geavanceerde ML.NET-modellen analyseren hoornaarsoorten, beoordelen risiconiveaus en geven directe communitywaarschuwingen om uw gebied te beschermen.",
+		"list": [
+			"Realtime soortidentificatie met 95%+ nauwkeurigheid",
+			"Geografische hotspotmapping en risicoanalyse",
+			"Communitybreeds waarschuwingssysteem en samenwerking",
+			"Voorspellende analyses en trendmonitoring"
+		],
+		"panel": {
+			"currentRisk": "Huidig risiconiveau"
+		},
+		"level": {
+			"medium": "Gemiddeld risico"
+		},
+		"species": {
+			"asianGiant": "Aziatische reuzenhoornaar",
+			"european": "Europese hoornaar",
+			"other": "Andere soorten"
+		},
+		"lastUpdated": {
+			"label": "Laatst bijgewerkt",
+			"time": "2 minuten geleden"
+		}
+	},
+	"footer": {
+		"tagline": "Gemeenschappen beschermen met geavanceerde technologie",
+		"poweredDotnet": "Aangedreven door .NET 9",
+		"ml": "ML.NET-detectie",
+		"next": "Next.js-dashboard",
+		"copyright": "© 2025 VespaTrace. Geavanceerde hoornaar-detectie voor communityveiligheid."
+	}
 }

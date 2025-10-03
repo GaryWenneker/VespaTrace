@@ -1,20 +1,98 @@
 {
-  "app.title": "VespaTrace",
-  "app.subtitle": "Verwaltungs-Dashboard",
-  "system.active": "System aktiv",
-  "button.dashboard": "Dashboard",
-
-  "hero.powered": ".NET 9 & KI-Erkennung",
-  "hero.poweredBy": "Angetrieben von .NET 9 & KI-Erkennung",
-  "hero.title": "Erweiterte Hornissen-Erkennung",
-  "hero.subtitle": "Managementsystem",
-  "cta.viewLive": "Live-Dashboard anzeigen",
-  "cta.watchDemo": "Demo ansehen",
-
-  "stats.activeMonitors": "Aktive Monitore",
-  "stats.alertsToday": "Warnungen heute",
-  "stats.verifiedSightings": "Bestätigte Sichtungen",
-  "stats.protectedAreas": "Geschützte Gebiete",
-
-  "section.comprehensive": "Umfassende Schutzplattform"
+  "app": {
+    "title": "VespaTrace",
+    "subtitle": "Verwaltungs-Dashboard"
+  },
+  "system": {
+    "active": "System aktiv"
+  },
+  "button": {
+    "dashboard": "Dashboard"
+  },
+  "hero": {
+    "powered": ".NET 9 & KI-Erkennung",
+    "poweredBy": "Angetrieben von .NET 9 & KI-Erkennung",
+    "title": "Erweiterte Hornissen-Erkennung",
+    "subtitle": "Managementsystem",
+    "description": "Schützen Sie Gemeinden vor asiatischen Riesenhornissen mit KI-gestützter Echtzeit-Identifizierung, umfassender Risikobewertung und sofortigen Community-Warnungen auf Web und Mobil."
+  },
+  "cta": {
+    "viewLive": "Live-Dashboard anzeigen",
+    "watchDemo": "Demo ansehen"
+  },
+  "stats": {
+    "activeMonitors": "Aktive Monitore",
+    "alertsToday": "Warnungen heute",
+    "verifiedSightings": "Bestätigte Sichtungen",
+    "protectedAreas": "Geschützte Gebiete"
+  },
+  "section": {
+    "comprehensive": "Umfassende Schutzplattform",
+    "comprehensiveSubtitle": "Fortschrittlicher Technologiestack für Echtzeit-Hornissenerkennung und Community-Sicherheitsmanagement"
+  },
+  "features": {
+    "web": {
+      "title": "Webverwaltung",
+      "description": "Professionelles Dashboard für Administratoren mit Echtzeit-Analysen, Risikobewertung und Community-Überblick.",
+      "features": [
+        "Next.js 15 + TypeScript",
+        "Echtzeit-Updates mit SignalR",
+        "Erweiterte Datenvisualisierung",
+        "Responsives Design"
+      ]
+    },
+    "mobile": {
+      "title": "Mobile Erkennung",
+      "description": "Plattformübergreifende MAUI-App für Feldberichte mit Kameraintegration und sofortiger KI-Identifizierung.",
+      "features": [
+        "Plattformübergreifendes MAUI",
+        "KI-gestützte Erkennung",
+        "GPS-Ortungsverfolgung",
+        "Offline-Funktionalität"
+      ]
+    },
+    "backend": {
+      "title": "KI-Backend",
+      "description": ".NET 9 API mit ML.NET-Integration für blitzschnelle Artenidentifikation.",
+      "features": [
+        ".NET 9 Leistung",
+        "ML.NET-Klassifizierung",
+        "Entity Framework",
+        "SignalR in Echtzeit"
+      ]
+    }
+  },
+  "risk": {
+    "badge": "Risikobewertung in Echtzeit",
+    "title": "Intelligente Bedrohungserkennung",
+    "description": "Unsere fortschrittlichen ML.NET-Modelle analysieren Hornissenarten, bewerten Risikoniveaus und liefern sofortige Community-Warnungen, um Ihre Region zu schützen.",
+    "list": [
+      "Echtzeit-Artenbestimmung mit über 95 % Genauigkeit",
+      "Kartierung von Hotspots und Risikoanalyse",
+      "Communityweites Warnsystem und Zusammenarbeit",
+      "Prädiktive Analysen und Trendüberwachung"
+    ],
+    "panel": {
+      "currentRisk": "Aktuelles Risikoniveau"
+    },
+    "level": {
+      "medium": "Mittleres Risiko"
+    },
+    "species": {
+      "asianGiant": "Asiatische Riesenhornisse",
+      "european": "Europäische Hornisse",
+      "other": "Andere Arten"
+    },
+    "lastUpdated": {
+      "label": "Zuletzt aktualisiert",
+      "time": "Vor 2 Minuten"
+    }
+  },
+  "footer": {
+    "tagline": "Gemeinschaften mit fortschrittlicher Technologie schützen",
+    "poweredDotnet": "Angetrieben von .NET 9",
+    "ml": "ML.NET-Erkennung",
+    "next": "Next.js-Dashboard",
+    "copyright": "© 2025 VespaTrace. Erweiterte Hornissenerkennung für die Sicherheit der Gemeinschaft."
+  }
 }
