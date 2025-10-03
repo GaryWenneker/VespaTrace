@@ -1,0 +1,6 @@
+@VespaTrace.API_HostAddress = http://localhost:5028
+
+GET {{VespaTrace.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

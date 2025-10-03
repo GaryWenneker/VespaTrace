@@ -1,0 +1,129 @@
+{
+  "User Story PRP": {
+    "prefix": ["prp-story", "userstory"],
+    "body": [
+      "#### ${1:FR-001}: ${2:Feature Name}",
+      "**As a** ${3:user type}",
+      "**I want** ${4:functionality}",
+      "**So that** ${5:benefit}",
+      "",
+      "**Acceptance Criteria:**",
+      "- **Given** ${6:context}",
+      "- **When** ${7:action}",
+      "- **Then** ${8:outcome}",
+      "",
+      "**Priority:** ${9|High,Medium,Low|}",
+      "**Effort:** ${10|S,M,L,XL|}",
+      "",
+      "---",
+      ""
+    ],
+    "description": "Generate a complete PRP user story with acceptance criteria"
+  },
+  
+  "Epic PRP": {
+    "prefix": ["prp-epic", "epic"],
+    "body": [
+      "### Epic: ${1:Epic Name}",
+      "",
+      "**Goal:** ${2:What we want to achieve}",
+      "**User Value:** ${3:Why this matters to users}",
+      "",
+      "#### Stories in this Epic:",
+      "",
+      "##### Story 1: ${4:Story Title}",
+      "```",
+      "As a ${5:user type}",
+      "I want ${6:functionality}",
+      "So that ${7:benefit}",
+      "",
+      "Acceptance Criteria:",
+      "☐ Given ${8:context}, when ${9:action}, then ${10:outcome}",
+      "☐ Given ${11:context}, when ${12:action}, then ${13:outcome}",
+      "```",
+      "",
+      "**Estimated Effort:** ${14:points}",
+      "**Dependencies:** ${15:none or list dependencies}",
+      ""
+    ],
+    "description": "Generate a complete Epic with user stories"
+  },
+  
+  "Technical Requirement PRP": {
+    "prefix": ["prp-tech", "technical"],
+    "body": [
+      "#### ${1:NFR-001}: ${2:Technical Requirement Name}",
+      "",
+      "**Type:** ${3|Performance,Security,Scalability,Reliability,Usability|}",
+      "",
+      "**Requirement:**",
+      "The system shall ${4:requirement description}",
+      "",
+      "**Specifications:**",
+      "- ${5:Metric}: ${6:Value}",
+      "- ${7:Constraint}: ${8:Limitation}",
+      "",
+      "**Acceptance Criteria:**",
+      "- **Given** ${9:system state}",
+      "- **When** ${10:condition occurs}",
+      "- **Then** ${11:system behavior}",
+      "",
+      "**Testing Method:** ${12:How to verify}",
+      "**Priority:** ${13|Critical,High,Medium,Low|}",
+      ""
+    ],
+    "description": "Generate technical/non-functional requirements"
+  },
+  
+  "Complete PRD Section": {
+    "prefix": ["prp-section", "prd-section"],
+    "body": [
+      "## ${1:Section Number}. ${2:Section Title}",
+      "",
+      "### ${3:Subsection Title}",
+      "",
+      "#### ${4:FR-001}: ${5:Feature Name}",
+      "**As a** ${6:user type}",
+      "**I want** ${7:functionality}",
+      "**So that** ${8:benefit}",
+      "",
+      "**Acceptance Criteria:**",
+      "- **Given** ${9:context}",
+      "- **When** ${10:action}",
+      "- **Then** ${11:outcome}",
+      "",
+      "**Priority:** ${12|High,Medium,Low|}",
+      "**Effort:** ${13|S,M,L,XL|}",
+      "**Dependencies:** ${14:List any dependencies}",
+      "",
+      "#### ${15:FR-002}: ${16:Next Feature}",
+      "[Add more requirements as needed]",
+      ""
+    ],
+    "description": "Generate a complete PRD section with multiple requirements"
+  },
+  
+  "Acceptance Criteria Block": {
+    "prefix": ["prp-ac", "acceptance"],
+    "body": [
+      "**Acceptance Criteria:**",
+      "",
+      "**Scenario 1: ${1:Happy Path}**",
+      "- **Given** ${2:initial state}",
+      "- **When** ${3:user action}",
+      "- **Then** ${4:expected result}",
+      "",
+      "**Scenario 2: ${5:Edge Case}**",
+      "- **Given** ${6:different state}",
+      "- **When** ${7:different action}",
+      "- **Then** ${8:expected behavior}",
+      "",
+      "**Scenario 3: ${9:Error Case}**",
+      "- **Given** ${10:error condition}",
+      "- **When** ${11:action attempted}",
+      "- **Then** ${12:error handling}",
+      ""
+    ],
+    "description": "Generate comprehensive acceptance criteria with multiple scenarios"
+  }
+}

@@ -1,0 +1,203 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Generate PRP File",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-ExecutionPolicy", "Bypass",
+                "-File", "${workspaceFolder}/scripts/Generate-PRP.ps1",
+                "-FeatureName", "${input:featureName}",
+                "-UserType", "${input:userType}",
+                "-Priority", "${input:priority}"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Create PRP from Template",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "Copy-Item '${workspaceFolder}/requirements/PRD_Template.md' '${workspaceFolder}/requirements/PRP_${input:newFeatureName}.md'; code '${workspaceFolder}/requirements/PRP_${input:newFeatureName}.md'"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false
+            }
+        },
+        {
+            "label": "Create .NET MAUI Project",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "new", "maui",
+                "-n", "${input:projectName}",
+                "-o", "src/${input:projectName}"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true
+            }
+        },
+        {
+            "label": "Create .NET Web API Project",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "new", "webapi",
+                "-n", "${input:apiProjectName}",
+                "-o", "src/${input:apiProjectName}",
+                "--use-minimal-apis"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true
+            }
+        },
+        {
+            "label": "Build VespaTrace Solution",
+            "type": "shell",
+            "command": "dotnet",
+            "args": ["build"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Run VespaTrace API",
+            "type": "shell",
+            "command": "dotnet",
+            "args": ["run", "--project", "src/VespaTrace.API"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false
+            },
+            "isBackground": true,
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Build All (.NET 9)",
+            "type": "shell",
+            "command": "dotnet",
+            "args": ["build", "--configuration", "Release"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Run Mobile App (Windows)",
+            "type": "shell",
+            "command": "dotnet",
+            "args": ["build", "src/VespaTrace.Mobile/VespaTrace.Mobile.csproj", "-f", "net9.0-windows10.0.19041.0", "-t:Run"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Clean All",
+            "type": "shell",
+            "command": "dotnet",
+            "args": ["clean"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Upgrade to .NET 9",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-ExecutionPolicy", "Bypass",
+                "-File", "${workspaceFolder}/scripts/Upgrade-DotNet9.ps1"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "featureName",
+            "description": "Feature name for the PRP",
+            "default": "New Feature",
+            "type": "promptString"
+        },
+        {
+            "id": "userType", 
+            "description": "User type (e.g., admin, customer, developer)",
+            "default": "user",
+            "type": "promptString"
+        },
+        {
+            "id": "priority",
+            "description": "Priority level",
+            "default": "Medium",
+            "type": "pickString",
+            "options": [
+                "High",
+                "Medium", 
+                "Low"
+            ]
+        },
+        {
+            "id": "newFeatureName",
+            "description": "Name for the new PRP file",
+            "default": "NewFeature",
+            "type": "promptString"
+        },
+        {
+            "id": "projectName",
+            "description": "Name for the .NET MAUI project",
+            "default": "VespaTrace.Mobile",
+            "type": "promptString"
+        },
+        {
+            "id": "apiProjectName",
+            "description": "Name for the .NET Web API project",
+            "default": "VespaTrace.API",
+            "type": "promptString"
+        }
+    ]
+}

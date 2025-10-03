@@ -1,0 +1,19 @@
+{
+    "recommendations": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "ms-dotnettools.dotnet-maui",
+        "ms-vscode.vscode-markdown",
+        "yzhang.markdown-all-in-one", 
+        "bierner.markdown-mermaid",
+        "ms-vscode.copilot",
+        "ms-vscode.copilot-chat",
+        "jebbs.plantuml",
+        "ms-vscode.vscode-json",
+        "ms-azuretools.vscode-azurefunctions",
+        "ms-azure-devops.azure-pipelines",
+        "humao.rest-client"
+    ],
+    "unwantedRecommendations": []
+}

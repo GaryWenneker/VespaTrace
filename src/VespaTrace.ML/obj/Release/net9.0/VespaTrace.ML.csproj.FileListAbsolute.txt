@@ -1,0 +1,16 @@
+C:\gary\VespaTrace\src\VespaTrace.ML\bin\Release\net9.0\VespaTrace.ML.deps.json
+C:\gary\VespaTrace\src\VespaTrace.ML\bin\Release\net9.0\VespaTrace.ML.dll
+C:\gary\VespaTrace\src\VespaTrace.ML\bin\Release\net9.0\VespaTrace.ML.pdb
+C:\gary\VespaTrace\src\VespaTrace.ML\bin\Release\net9.0\VespaTrace.Shared.dll
+C:\gary\VespaTrace\src\VespaTrace.ML\bin\Release\net9.0\VespaTrace.Shared.pdb
+C:\gary\VespaTrace\src\VespaTrace.ML\obj\Release\net9.0\VespaTrace.ML.csproj.AssemblyReference.cache
+C:\gary\VespaTrace\src\VespaTrace.ML\obj\Release\net9.0\VespaTrace.ML.GeneratedMSBuildEditorConfig.editorconfig
+C:\gary\VespaTrace\src\VespaTrace.ML\obj\Release\net9.0\VespaTrace.ML.AssemblyInfoInputs.cache
+C:\gary\VespaTrace\src\VespaTrace.ML\obj\Release\net9.0\VespaTrace.ML.AssemblyInfo.cs
+C:\gary\VespaTrace\src\VespaTrace.ML\obj\Release\net9.0\VespaTrace.ML.csproj.CoreCompileInputs.cache
+C:\gary\VespaTrace\src\VespaTrace.ML\obj\Release\net9.0\VespaTrace.ML.sourcelink.json
+C:\gary\VespaTrace\src\VespaTrace.ML\obj\Release\net9.0\VespaTra.E68B2C17.Up2Date
+C:\gary\VespaTrace\src\VespaTrace.ML\obj\Release\net9.0\VespaTrace.ML.dll
+C:\gary\VespaTrace\src\VespaTrace.ML\obj\Release\net9.0\refint\VespaTrace.ML.dll
+C:\gary\VespaTrace\src\VespaTrace.ML\obj\Release\net9.0\VespaTrace.ML.pdb
+C:\gary\VespaTrace\src\VespaTrace.ML\obj\Release\net9.0\ref\VespaTrace.ML.dll
