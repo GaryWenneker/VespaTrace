@@ -3,6 +3,8 @@
 import { Activity, AlertTriangle, ArrowRight, BarChart3, CheckCircle, Eye, Globe, MapPin, Shield, Smartphone, TrendingUp, Users, Zap } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
+import Link from 'next/link';
+
 export default function Home() {
   const [mounted, setMounted] = useState(false);
 
@@ -20,7 +22,7 @@ export default function Home() {
       <header className="relative z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-6">
-            <div className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-3" aria-label="Go to home">
               <div className="relative">
                 <Shield className="h-10 w-10 text-orange-500" />
                 <div className="absolute -top-1 -right-1 w-4 h-4 bg-orange-500 rounded-full animate-pulse" />
@@ -31,7 +33,7 @@ export default function Home() {
                 </h1>
                 <p className="text-xs text-gray-400">Management Dashboard</p>
               </div>
-            </div>
+            </Link>
             
             <div className="flex items-center space-x-4">
               <div className="hidden md:flex items-center space-x-2 bg-green-500/10 text-green-400 px-3 py-1 rounded-full border border-green-500/20">
@@ -241,13 +243,13 @@ export default function Home() {
       <footer className="border-t border-gray-800 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-3 mb-4 md:mb-0">
+            <Link href="/" className="flex items-center space-x-3 mb-4 md:mb-0" aria-label="Go to home">
               <Shield className="h-8 w-8 text-orange-500" />
               <div>
                 <h3 className="text-lg font-bold text-white">VespaTrace</h3>
                 <p className="text-sm text-gray-400">Protecting communities with advanced technology</p>
               </div>
-            </div>
+            </Link>
             <div className="flex items-center space-x-6 text-sm text-gray-400">
               <span>Powered by .NET 9</span>
               <span>•</span>

@@ -1,0 +1,156 @@
+# Root .gitignore for VespaTrace
+# Combines common ignore rules for .NET, Node.js/React/Next.js, and OS/editor cruft
+
+# =========================================
+# OS / Editor files
+# =========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# JetBrains
+.idea/
+*.iml
+
+# =========================================
+# Git
+# =========================================
+*.orig
+*.rej
+*.patch
+
+# =========================================
+# Node / React / Next.js
+# =========================================
+node_modules/
+.pnpm-debug.log*
+yarn.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Yarn / PnP
+.pnp*
+.pnp/
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Next.js
+.next/
+out/
+.next-static/
+
+# Build output
+build/
+dist/
+
+# Env files
+.env
+.env.*
+.env.local
+.env.*.local
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Coverage
+coverage/
+
+# =========================================
+# .NET / Visual Studio / MSBuild
+# =========================================
+## User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+## Visual Studio cache/options
+.vs/
+
+## Rider
+.idea/
+
+## NuGet
+*.nupkg
+# NuGet Packages folder can be ignored if you use packages.config
+packages/
+# except build/ to allow checking in MSBuild targets
+!packages/build/
+!packages/repositories.config
+# NuGet v3 caches
+~/.nuget/packages/
+
+## DotCover
+.idea/.idea.DotSettings
+
+## Azure
+*.azurePubxml
+*.Publish.xml
+*.pubxml
+*.pubxml.user
+
+## Resharper
+_Resharper*/
+*.DotSettings.user
+
+## Logs
+*.log
+
+## Others
+project.lock.json
+artifacts/
+**/Properties/launchSettings.json
+
+# EF Core Migrations snapshots (optional)
+**/Migrations/*Snapshot.cs
+
+# IIS / Web
+[Ii][Nn][Ee][Tt][Uu][Ss][Ee][Rr]/
+
+# Temp
+*.tmp
+*.temp
+~*
+
+# =========================================
+# Images/Assets build caches
+# =========================================
+*.cache
+.cache/
+
+src/VespaTrace.Shared/obj/
+
+src/VespaTrace.Mobile/obj/
+
+src/VespaTrace.ML/obj/
+
+src/VespaTrace.API/obj/
