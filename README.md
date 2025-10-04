@@ -326,3 +326,22 @@ VespaTrace/
 5. **Azure Deployment** (Cloud infrastructure)
 
 See `DEVELOPMENT.md` for detailed setup instructions and `requirements/PRP_Hornet_Nest_Localization_App.md` for complete feature specifications.
+
+## 📍 Appendix: Netherlands country_divisions (Waarneming.nl)
+
+When scraping Waarneming.nl for Netherlands observations, the following `country_division` IDs are used to represent provinces. The scraper fills `province` based on this mapping when `divisionId` is present:
+
+- 1: Utrecht
+- 2: Noord-Holland
+- 3: Friesland
+- 4: Groningen
+- 5: Drenthe
+- 6: Overijssel
+- 7: Gelderland
+- 8: Flevoland
+- 9: Zuid-Holland
+- 10: Noord-Brabant
+- 11: Limburg
+- 12: Zeeland
+
+These align with the province filters on Waarneming.nl and can be passed via the `DIVISIONS` environment variable (comma-separated) when running the scraper.

@@ -21,6 +21,22 @@ const RAW_HTML = process.env.RAW_HTML === '1';
 const HEADLESS = process.env.HEADLESS !== '0';
 const MAX_HTML = Math.max(0, parseInt(process.env.MAX_HTML || '50000', 10));
 
+// NL country_division -> province name mapping (Waarneming.nl)
+const NL_DIVISION_MAP = {
+  '1': 'Utrecht',
+  '2': 'Noord-Holland',
+  '3': 'Friesland',
+  '4': 'Groningen',
+  '5': 'Drenthe',
+  '6': 'Overijssel',
+  '7': 'Gelderland',
+  '8': 'Flevoland',
+  '9': 'Zuid-Holland',
+  '10': 'Noord-Brabant',
+  '11': 'Limburg',
+  '12': 'Zeeland'
+};
+
 const BASE_LIST = (divisionId, page=1) => {
   const base = new URL(`https://waarneming.nl/species/${SPECIES_ID}/observations/`);
   const qp = base.searchParams;
@@ -356,6 +372,10 @@ async function main() {
           try {
             const obs = await fetchObservation(context, id);
             obs.divisionId = div;
+            // Fill province from division map when not present on the page
+            if (!obs.province && div && NL_DIVISION_MAP[div]) {
+              obs.province = NL_DIVISION_MAP[div];
+            }
             // Merge list meta if detail page lacks values
             const m = meta[id] || {};
             if ((obs.count == null || Number.isNaN(obs.count)) && m.listCount != null) obs.count = m.listCount;
