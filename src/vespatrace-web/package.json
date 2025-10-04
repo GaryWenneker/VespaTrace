@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+  "dev": "next dev -p 3000 --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
     "fetch:waarneming:range": "set SPECIES_ID=8807&& set DATE_AFTER=2024-10-04&& set DATE_BEFORE=2025-10-04&& set DIVISIONS=7&& node ./scripts/fetch-asian-hornet-2025-nl.mjs",
-    "fetch:hornet:nl:browser": "node ./scripts/fetch-asian-hornet-2025-nl-browser.mjs"
+    "fetch:hornet:nl:browser": "node ./scripts/fetch-asian-hornet-2025-nl-browser.mjs",
+    "db:migrate": "node -e \"const {execSync}=require('child_process'); execSync('psql \"'+process.env.DATABASE_URL+'\" -f ./db/migrations/001_init_postgis.sql', {stdio:'inherit'})\"",
+    "db:import:nests": "node ./scripts/import-nests-from-json.mjs"
   },
   "dependencies": {
     "@microsoft/signalr": "^9.0.6",
@@ -23,7 +25,9 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "recharts": "^3.2.1",
-    "playwright": "^1.48.2"
+    "playwright": "^1.48.2",
+    "pg": "^8.13.1",
+    "leaflet": "^1.9.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -36,6 +40,9 @@
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@types/pg": "^8.11.10",
+    "@types/leaflet": "^1.9.12",
+    "ts-node": "^10.9.2"
   }
 }

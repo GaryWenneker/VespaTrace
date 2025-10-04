@@ -1,73 +1,81 @@
-'use client';
+"use client";
 
-import { Activity, AlertTriangle, ArrowRight, BarChart3, Bug, CheckCircle, Eye, Globe, MapPin, Menu, Shield, Smartphone, TrendingUp, Users, X, Zap } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
+import {
+  Activity,
+  AlertTriangle,
+  ArrowRight,
+  BarChart3,
+  Bug,
+  CheckCircle,
+  Eye,
+  Globe,
+  MapPin,
+  Menu,
+  Shield,
+  Smartphone,
+  TrendingUp,
+  Users,
+  X,
+  Zap
+} from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { useLocale, useTranslations } from 'next-intl'
 
-import LanguageSwitcher from '@/components/LanguageSwitcher';
-import Link from 'next/link';
+import LanguageSwitcher from '@/components/LanguageSwitcher'
+import Link from 'next/link'
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [menuVisible, setMenuVisible] = useState(false);
-  const t = useTranslations();
-  const locale = useLocale();
+  const [mounted, setMounted] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [menuVisible, setMenuVisible] = useState(false)
+  const t = useTranslations()
+  const locale = useLocale()
+
+  useEffect(() => setMounted(true), [])
+
+  const panelRef = useRef<HTMLDivElement | null>(null)
+  const closeBtnRef = useRef<HTMLButtonElement | null>(null)
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    if (!mobileOpen) return
+    const previousOverflow = document.documentElement.style.overflow
+    document.documentElement.style.overflow = 'hidden'
 
-  // Accessibility: trap focus and close on Escape when mobile menu is open
-  const panelRef = useRef<HTMLDivElement | null>(null);
-  const closeBtnRef = useRef<HTMLButtonElement | null>(null);
-
-  useEffect(() => {
-    if (!mobileOpen) return;
-
-    const previousOverflow = document.documentElement.style.overflow;
-    document.documentElement.style.overflow = 'hidden';
-
-    // Focus close button initially
-    closeBtnRef.current?.focus();
+    closeBtnRef.current?.focus()
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setMobileOpen(false);
-        return;
+        setMobileOpen(false)
+        return
       }
       if (e.key === 'Tab' && panelRef.current) {
         const focusable = panelRef.current.querySelectorAll<HTMLElement>(
           'a[href], button:not([disabled]), [tabindex="0"]'
-        );
-        if (focusable.length === 0) return;
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-        const active = document.activeElement as HTMLElement | null;
+        )
+        if (focusable.length === 0) return
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        const active = document.activeElement as HTMLElement | null
         if (e.shiftKey) {
           if (active === first) {
-            last.focus();
-            e.preventDefault();
+            last.focus(); e.preventDefault()
           }
         } else {
           if (active === last) {
-            first.focus();
-            e.preventDefault();
+            first.focus(); e.preventDefault()
           }
         }
       }
-    };
+    }
 
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown)
     return () => {
-      document.documentElement.style.overflow = previousOverflow;
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [mobileOpen]);
+      document.documentElement.style.overflow = previousOverflow
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [mobileOpen])
 
-  if (!mounted) {
-    return null; // Avoid hydration issues
-  }
+  if (!mounted) return null
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-x-hidden">
@@ -87,33 +95,26 @@ export default function Home() {
                 <p className="text-xs text-gray-400">{t('app.subtitle')}</p>
               </div>
             </Link>
-            
             <div className="flex items-center space-x-4">
               <div className="hidden md:flex items-center space-x-2 bg-green-500/10 text-green-400 px-3 py-1 rounded-full border border-green-500/20">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <span className="text-sm font-medium">{t('system.active')}</span>
               </div>
-              <button className="hidden md:inline-flex bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-lg font-medium transition-colors">
+              <Link href={`/${locale}/dashboard`} className="hidden md:inline-flex bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-lg font-medium transition-colors">
                 {t('button.dashboard')}
-              </button>
+              </Link>
               <div className="hidden md:block">
                 <LanguageSwitcher />
               </div>
-              {/* Mobile hamburger */}
               <button
                 type="button"
                 aria-label="Open menu"
                 aria-expanded={mobileOpen}
                 aria-controls="mobile-menu"
-                onClick={() => {
-                  setMenuVisible(true);
-                  // Allow initial render before toggling transform to trigger transition
-                  requestAnimationFrame(() => setMobileOpen(true));
-                }}
+                onClick={() => { setMenuVisible(true); requestAnimationFrame(() => setMobileOpen(true)) }}
                 className="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border border-gray-700/60 bg-gray-800/60 hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500/50"
               >
                 <div className="relative">
-                  {/* Vespa-styled hamburger: bars with accent and a small bug icon */}
                   <Menu className="h-6 w-6 text-gray-200" />
                   <Bug className="h-3 w-3 text-orange-500 absolute -top-1 -right-1" />
                 </div>
@@ -134,11 +135,7 @@ export default function Home() {
             id="mobile-menu"
             ref={panelRef}
             className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-gray-900 border-l border-gray-700 shadow-2xl transform transition-transform duration-300 ease-out ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}
-            onTransitionEnd={(e) => {
-              if (e.target === e.currentTarget && !mobileOpen) {
-                setMenuVisible(false);
-              }
-            }}
+            onTransitionEnd={(e) => { if (e.target === e.currentTarget && !mobileOpen) setMenuVisible(false) }}
           >
             <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
               <div className="flex items-center space-x-2">
@@ -172,8 +169,8 @@ export default function Home() {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href={`#features`}
+                  <a
+                    href="#features"
                     className="flex items-center justify-between px-3 py-3 rounded-lg hover:bg-gray-800/70 border border-transparent hover:border-gray-700 transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
@@ -182,11 +179,11 @@ export default function Home() {
                       <span className="text-gray-200">{t('nav.features', { default: 'Features' })}</span>
                     </div>
                     <ArrowRight className="h-4 w-4 text-gray-500" />
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    href={`#risk`}
+                  <a
+                    href="#risk"
                     className="flex items-center justify-between px-3 py-3 rounded-lg hover:bg-gray-800/70 border border-transparent hover:border-gray-700 transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
@@ -195,11 +192,11 @@ export default function Home() {
                       <span className="text-gray-200">{t('nav.risk', { default: 'Risk' })}</span>
                     </div>
                     <ArrowRight className="h-4 w-4 text-gray-500" />
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <Link
-                    href={`/${locale}`}
+                    href={`/${locale}/dashboard`}
                     className="flex items-center justify-between px-3 py-3 rounded-lg hover:bg-gray-800/70 border border-transparent hover:border-gray-700 transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
@@ -209,18 +206,6 @@ export default function Home() {
                     </div>
                     <ArrowRight className="h-4 w-4 text-gray-500" />
                   </Link>
-                </li>
-                <li>
-                  <button
-                    className="w-full flex items-center justify-between px-3 py-3 rounded-lg hover:bg-gray-800/70 border border-transparent hover:border-gray-700 transition-colors"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    <div className="flex items-center space-x-3">
-                      <Eye className="h-5 w-5 text-purple-400" />
-                      <span className="text-gray-200">{t('cta.watchDemo')}</span>
-                    </div>
-                    <ArrowRight className="h-4 w-4 text-gray-500" />
-                  </button>
                 </li>
               </ul>
 
@@ -242,7 +227,7 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-  <section id="hero" className="relative py-20 px-4 sm:px-6 lg:px-8">
+      <section id="hero" className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-transparent to-red-500/10" />
         <div className="relative max-w-7xl mx-auto text-center">
           <div className="mb-8">
@@ -261,17 +246,16 @@ export default function Home() {
               {t('hero.description')}
             </p>
           </div>
-          
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                        <button className="bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 px-8 py-4 rounded-xl font-semibold text-lg shadow-lg shadow-orange-500/25 transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
+            <Link href={`/${locale}/dashboard`} className="bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 px-8 py-4 rounded-xl font-semibold text-lg shadow-lg shadow-orange-500/25 transform hover:scale-105 transition-all duration-200 flex items-center space-x-2">
               <Activity className="h-5 w-5" />
               <span>{t('cta.viewLive')}</span>
               <ArrowRight className="h-5 w-5" />
-            </button>
-            <button className="border border-gray-600 hover:border-gray-500 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800/50 transition-all duration-200 flex items-center space-x-2">
+            </Link>
+            <a className="border border-gray-600 hover:border-gray-500 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800/50 transition-all duration-200 flex items-center space-x-2" href="#features">
               <Eye className="h-5 w-5" />
               <span>{t('cta.watchDemo')}</span>
-            </button>
+            </a>
           </div>
 
           {/* Live Stats */}
@@ -293,7 +277,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-  <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
@@ -349,7 +333,7 @@ export default function Home() {
       </section>
 
       {/* Risk Assessment Section */}
-  <section id="risk" className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="risk" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -392,7 +376,7 @@ export default function Home() {
                     <span className="text-gray-400">{t('risk.species.asianGiant')}</span>
                     <div className="flex items-center space-x-2">
                       <div className="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
-                        <div className="w-3/5 h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"></div>
+                        <div className="w-3/5 h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full" />
                       </div>
                       <span className="text-white font-medium">60%</span>
                     </div>
@@ -401,7 +385,7 @@ export default function Home() {
                     <span className="text-gray-400">{t('risk.species.european')}</span>
                     <div className="flex items-center space-x-2">
                       <div className="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
-                        <div className="w-1/4 h-full bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
+                        <div className="w-1/4 h-full bg-gradient-to-r from-green-500 to-blue-500 rounded-full" />
                       </div>
                       <span className="text-white font-medium">25%</span>
                     </div>
@@ -410,7 +394,7 @@ export default function Home() {
                     <span className="text-gray-400">{t('risk.species.other')}</span>
                     <div className="flex items-center space-x-2">
                       <div className="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
-                        <div className="w-1/6 h-full bg-gradient-to-r from-gray-500 to-gray-600 rounded-full"></div>
+                        <div className="w-1/6 h-full bg-gradient-to-r from-gray-500 to-gray-600 rounded-full" />
                       </div>
                       <span className="text-white font-medium">15%</span>
                     </div>
@@ -423,8 +407,8 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-orange-500/20 rounded-full blur-xl"></div>
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-red-500/20 rounded-full blur-xl"></div>
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-orange-500/20 rounded-full blur-xl" />
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-red-500/20 rounded-full blur-xl" />
             </div>
           </div>
         </div>
@@ -455,5 +439,5 @@ export default function Home() {
         </div>
       </footer>
     </div>
-  );
+  )
 }
