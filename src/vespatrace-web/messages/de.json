@@ -95,4 +95,13 @@
     "next": "Next.js-Dashboard",
     "copyright": "© 2025 VespaTrace. Erweiterte Hornissenerkennung für die Sicherheit der Gemeinschaft."
   }
+  ,
+  "nav": {
+    "home": "Start",
+    "features": "Funktionen",
+    "risk": "Risiko"
+  },
+  "menu": {
+    "language": "Sprache"
+  }
 }

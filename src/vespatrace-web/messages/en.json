@@ -95,4 +95,13 @@
 		"next": "Next.js Dashboard",
 		"copyright": "© 2025 VespaTrace. Advanced hornet detection for community safety."
 	}
+		,
+		"nav": {
+			"home": "Home",
+			"features": "Features",
+			"risk": "Risk"
+		},
+		"menu": {
+			"language": "Language"
+		}
 }

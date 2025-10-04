@@ -95,4 +95,13 @@
     "next": "Tableau de bord Next.js",
     "copyright": "© 2025 VespaTrace. Détection avancée des frelons pour la sécurité des communautés."
   }
+  ,
+  "nav": {
+    "home": "Accueil",
+    "features": "Fonctionnalités",
+    "risk": "Risque"
+  },
+  "menu": {
+    "language": "Langue"
+  }
 }

@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "fetch:hornet:nl:2025": "node ./scripts/fetch-asian-hornet-2025-nl.mjs"
   },
   "dependencies": {
     "@microsoft/signalr": "^9.0.6",

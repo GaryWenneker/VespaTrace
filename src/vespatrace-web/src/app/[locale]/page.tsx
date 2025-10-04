@@ -1,7 +1,7 @@
 'use client';
 
-import { Activity, AlertTriangle, ArrowRight, BarChart3, CheckCircle, Eye, Globe, MapPin, Shield, Smartphone, TrendingUp, Users, Zap } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { Activity, AlertTriangle, ArrowRight, BarChart3, Bug, CheckCircle, Eye, Globe, MapPin, Menu, Shield, Smartphone, TrendingUp, Users, X, Zap } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 
 import LanguageSwitcher from '@/components/LanguageSwitcher';
@@ -9,12 +9,61 @@ import Link from 'next/link';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
   const t = useTranslations();
   const locale = useLocale();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Accessibility: trap focus and close on Escape when mobile menu is open
+  const panelRef = useRef<HTMLDivElement | null>(null);
+  const closeBtnRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const previousOverflow = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = 'hidden';
+
+    // Focus close button initially
+    closeBtnRef.current?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileOpen(false);
+        return;
+      }
+      if (e.key === 'Tab' && panelRef.current) {
+        const focusable = panelRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex="0"]'
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const active = document.activeElement as HTMLElement | null;
+        if (e.shiftKey) {
+          if (active === first) {
+            last.focus();
+            e.preventDefault();
+          }
+        } else {
+          if (active === last) {
+            first.focus();
+            e.preventDefault();
+          }
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.documentElement.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [mobileOpen]);
 
   if (!mounted) {
     return null; // Avoid hydration issues
@@ -44,17 +93,156 @@ export default function Home() {
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <span className="text-sm font-medium">{t('system.active')}</span>
               </div>
-              <button className="bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-lg font-medium transition-colors">
+              <button className="hidden md:inline-flex bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-lg font-medium transition-colors">
                 {t('button.dashboard')}
               </button>
-              <LanguageSwitcher />
+              <div className="hidden md:block">
+                <LanguageSwitcher />
+              </div>
+              {/* Mobile hamburger */}
+              <button
+                type="button"
+                aria-label="Open menu"
+                aria-expanded={mobileOpen}
+                aria-controls="mobile-menu"
+                onClick={() => {
+                  setMenuVisible(true);
+                  // Allow initial render before toggling transform to trigger transition
+                  requestAnimationFrame(() => setMobileOpen(true));
+                }}
+                className="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border border-gray-700/60 bg-gray-800/60 hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500/50"
+              >
+                <div className="relative">
+                  {/* Vespa-styled hamburger: bars with accent and a small bug icon */}
+                  <Menu className="h-6 w-6 text-gray-200" />
+                  <Bug className="h-3 w-3 text-orange-500 absolute -top-1 -right-1" />
+                </div>
+              </button>
             </div>
           </div>
         </div>
       </header>
 
+      {/* Mobile slide-over menu */}
+      {menuVisible && (
+        <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true">
+          <div
+            className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}
+            onClick={() => setMobileOpen(false)}
+          />
+          <div
+            id="mobile-menu"
+            ref={panelRef}
+            className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-gray-900 border-l border-gray-700 shadow-2xl transform transition-transform duration-300 ease-out ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}
+            onTransitionEnd={(e) => {
+              if (e.target === e.currentTarget && !mobileOpen) {
+                setMenuVisible(false);
+              }
+            }}
+          >
+            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
+              <div className="flex items-center space-x-2">
+                <Shield className="h-6 w-6 text-orange-500" />
+                <span className="font-semibold">{t('app.title')}</span>
+              </div>
+              <button
+                type="button"
+                aria-label="Close menu"
+                onClick={() => setMobileOpen(false)}
+                ref={closeBtnRef}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-gray-700 bg-gray-800/60 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-500/50"
+              >
+                <X className="h-5 w-5 text-gray-200" />
+              </button>
+            </div>
+
+            <nav className="px-5 py-4">
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href={`/${locale}`}
+                    className="flex items-center justify-between px-3 py-3 rounded-lg hover:bg-gray-800/70 border border-transparent hover:border-gray-700 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <Shield className="h-5 w-5 text-orange-400" />
+                      <span className="text-gray-200">{t('nav.home', { default: 'Home' })}</span>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-gray-500" />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`#features`}
+                    className="flex items-center justify-between px-3 py-3 rounded-lg hover:bg-gray-800/70 border border-transparent hover:border-gray-700 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <Globe className="h-5 w-5 text-blue-400" />
+                      <span className="text-gray-200">{t('nav.features', { default: 'Features' })}</span>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-gray-500" />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`#risk`}
+                    className="flex items-center justify-between px-3 py-3 rounded-lg hover:bg-gray-800/70 border border-transparent hover:border-gray-700 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <AlertTriangle className="h-5 w-5 text-yellow-400" />
+                      <span className="text-gray-200">{t('nav.risk', { default: 'Risk' })}</span>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-gray-500" />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}`}
+                    className="flex items-center justify-between px-3 py-3 rounded-lg hover:bg-gray-800/70 border border-transparent hover:border-gray-700 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <Activity className="h-5 w-5 text-green-400" />
+                      <span className="text-gray-200">{t('button.dashboard')}</span>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-gray-500" />
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    className="w-full flex items-center justify-between px-3 py-3 rounded-lg hover:bg-gray-800/70 border border-transparent hover:border-gray-700 transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <Eye className="h-5 w-5 text-purple-400" />
+                      <span className="text-gray-200">{t('cta.watchDemo')}</span>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-gray-500" />
+                  </button>
+                </li>
+              </ul>
+
+              <div className="mt-6 space-y-3">
+                <div className="text-xs uppercase tracking-wider text-gray-500 px-1">
+                  {t('menu.language', { default: 'Language' })}
+                </div>
+                <div className="px-1">
+                  <LanguageSwitcher />
+                </div>
+                <div className="flex items-center space-x-2 bg-green-500/10 text-green-400 px-3 py-2 rounded-lg border border-green-500/20 w-max">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                  <span className="text-sm font-medium">{t('system.active')}</span>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8">
+  <section id="hero" className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-transparent to-red-500/10" />
         <div className="relative max-w-7xl mx-auto text-center">
           <div className="mb-8">
@@ -105,7 +293,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+  <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
@@ -161,7 +349,7 @@ export default function Home() {
       </section>
 
       {/* Risk Assessment Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+  <section id="risk" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>

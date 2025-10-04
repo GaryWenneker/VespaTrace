@@ -94,5 +94,13 @@
 		"ml": "ML.NET-detectie",
 		"next": "Next.js-dashboard",
 		"copyright": "© 2025 VespaTrace. Geavanceerde hoornaar-detectie voor communityveiligheid."
-	}
+  },
+  "nav": {
+    "home": "Home",
+    "features": "Functies",
+    "risk": "Risico"
+  },
+  "menu": {
+    "language": "Taal"
+  }
 }
