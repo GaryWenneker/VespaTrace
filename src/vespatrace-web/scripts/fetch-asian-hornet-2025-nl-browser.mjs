@@ -190,8 +190,9 @@ function extractFromObservationHtml(html) {
   };
 }
 
-async function collectListIds(ctx, divisionId) {
-  const seen = new Set();
+async function collectListIds(ctx, divisionId, initialKnownIds = []) {
+  const initialKnown = new Set(initialKnownIds || []);
+  const seen = new Set(initialKnown);
   const meta = {}; // id -> { listCount, sex, nest, nestType }
   let pageNo = 1;
   const page = await ctx.newPage();
@@ -289,7 +290,9 @@ async function collectListIds(ctx, divisionId) {
   } finally {
     await page.close();
   }
-  return { ids: Array.from(seen), meta };
+  const allIds = Array.from(seen);
+  const newIds = allIds.filter(id => !initialKnown.has(id));
+  return { ids: allIds, meta, newIds };
 }
 
 async function fetchObservation(ctx, id) {
@@ -354,21 +357,49 @@ async function fetchObservation(ctx, id) {
 
 async function main() {
   if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
+  // Load previous output to allow resume
+  let previous = null;
+  if (fs.existsSync(OUT_FILE)) {
+    try {
+      previous = JSON.parse(fs.readFileSync(OUT_FILE, 'utf-8'));
+    } catch {}
+  }
+  const existingAll = Array.isArray(previous?.observations) ? previous.observations : [];
+  const inDivisions = new Set(DIVISIONS.map(String));
+  const tsAfter = DATE_AFTER ? Date.parse(DATE_AFTER) : null;
+  const tsBefore = DATE_BEFORE ? Date.parse(DATE_BEFORE) : null;
+  function obsInRange(o) {
+    if (o?.divisionId && !inDivisions.has(String(o.divisionId))) return false;
+    // Parse date from dateTime (preferred) or date
+    const dt = (o?.dateTime && (o.dateTime.replace(' ', 'T') + (o.dateTime.length === 10 ? 'T00:00:00' : ''))) || o?.date || null;
+    if (!dt) return true; // if unknown, don't exclude
+    const t = Date.parse(dt);
+    if (Number.isNaN(t)) return true;
+    if (tsAfter != null && t < tsAfter) return false;
+    if (tsBefore != null && t > tsBefore) return false;
+    return true;
+  }
+  const existingObservations = existingAll.filter(obsInRange);
+  const existingById = new Map(existingObservations.map(o => [String(o.id), o]));
+  const knownIds = new Set([...existingById.keys()]);
   const context = await chromium.launchPersistentContext(PROFILE_DIR, {
     headless: HEADLESS,
     viewport: { width: 1280, height: 900 },
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
   });
   try {
-    const results = [];
+    const resultsNew = [];
     for (const div of DIVISIONS) {
-      const { ids, meta } = await collectListIds(context, div);
+      const { ids, meta, newIds } = await collectListIds(context, div, knownIds);
       let idx = 0;
+      const toFetch = (newIds && newIds.length ? newIds : ids.filter(id => !knownIds.has(id)));
+      // Add new IDs to known set to avoid duplicate work across divisions (ids are globally unique)
+      for (const id of toFetch) knownIds.add(id);
       const worker = async () => {
         while (true) {
           const i = idx++;
-          if (i >= ids.length) break;
-          const id = ids[i];
+          if (i >= toFetch.length) break;
+          const id = toFetch[i];
           try {
             const obs = await fetchObservation(context, id);
             obs.divisionId = div;
@@ -383,7 +414,7 @@ async function main() {
             if (!obs.sex && m.sex) obs.sex = m.sex;
             if (m.nest) obs.nest = true;
             if (!obs.nestType && m.nestType) obs.nestType = m.nestType;
-            results.push(obs);
+            resultsNew.push(obs);
             await sleep(300 + Math.floor(Math.random() * 300));
           } catch (e) {
             console.warn('Skip id due to error', id, e?.message || e);
@@ -395,9 +426,20 @@ async function main() {
       await Promise.all(workers);
     }
 
+    // Merge old + new
+    const mergedById = new Map(existingObservations.map(o => [String(o.id), o]));
+    for (const o of resultsNew) mergedById.set(String(o.id), o);
+    // Upgrade province for existing where possible via division map
+    for (const o of mergedById.values()) {
+      if (!o.province && o.divisionId && NL_DIVISION_MAP[String(o.divisionId)]) {
+        o.province = NL_DIVISION_MAP[String(o.divisionId)];
+      }
+    }
+
+    const finalObservations = Array.from(mergedById.values());
     // Group by province
     const byProvince = {};
-    for (const item of results) {
+    for (const item of finalObservations) {
       const prov = item.province || (item.divisionId ? `Division-${item.divisionId}` : 'Unknown');
       if (!byProvince[prov]) byProvince[prov] = [];
       byProvince[prov].push(item);
@@ -413,10 +455,10 @@ async function main() {
         dateBefore: DATE_BEFORE || null,
         speciesId: SPECIES_ID,
         divisions: DIVISIONS,
-        total: results.length,
+        total: finalObservations.length,
         options: { concurrency: CONCURRENCY, browser: true, rawHtml: RAW_HTML }
       },
-      observations: results,
+      observations: finalObservations,
       summary,
       provinces: byProvince
     };
