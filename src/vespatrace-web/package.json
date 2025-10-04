@@ -7,7 +7,8 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "fetch:hornet:nl:2025": "node ./scripts/fetch-asian-hornet-2025-nl.mjs"
+    "fetch:waarneming:range": "set SPECIES_ID=8807&& set DATE_AFTER=2024-10-04&& set DATE_BEFORE=2025-10-04&& set DIVISIONS=7&& node ./scripts/fetch-asian-hornet-2025-nl.mjs",
+    "fetch:hornet:nl:browser": "node ./scripts/fetch-asian-hornet-2025-nl-browser.mjs"
   },
   "dependencies": {
     "@microsoft/signalr": "^9.0.6",
@@ -21,7 +22,8 @@
     "next-intl": "^4.3.9",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "recharts": "^3.2.1"
+    "recharts": "^3.2.1",
+    "playwright": "^1.48.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

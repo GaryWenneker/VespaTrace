@@ -8,6 +8,10 @@
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
+.env
+data/waarneming.cookies.json
+data/cookie.txt
+data/pw-profile/
 !.yarn/versions
 
 # testing
